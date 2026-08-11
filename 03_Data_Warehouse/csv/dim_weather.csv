@@ -1,0 +1,24 @@
+﻿weather_key,condition_group,temp_band,precip_level,is_precipitating
+1,Clear,1. Freezing (<32F),None,False
+2,Clear,2. Cold (32-50F),None,False
+3,Clear,3. Mild (50-70F),None,False
+4,Clear,4. Warm (70-85F),None,False
+5,Cloudy,1. Freezing (<32F),None,False
+6,Cloudy,2. Cold (32-50F),None,False
+7,Cloudy,3. Mild (50-70F),None,False
+8,Cloudy,4. Warm (70-85F),None,False
+9,Cloudy,5. Hot (>85F),None,False
+10,Rain,1. Freezing (<32F),Light,True
+11,Rain,2. Cold (32-50F),Light,True
+12,Rain,2. Cold (32-50F),Moderate,True
+13,Rain,3. Mild (50-70F),Heavy,True
+14,Rain,3. Mild (50-70F),Light,True
+15,Rain,3. Mild (50-70F),Moderate,True
+16,Rain,4. Warm (70-85F),Heavy,True
+17,Rain,4. Warm (70-85F),Light,True
+18,Rain,4. Warm (70-85F),Moderate,True
+19,Snow,1. Freezing (<32F),Light,True
+20,Snow,1. Freezing (<32F),None,False
+21,Snow,2. Cold (32-50F),Light,True
+22,Snow,2. Cold (32-50F),Moderate,True
+23,Snow,2. Cold (32-50F),None,False

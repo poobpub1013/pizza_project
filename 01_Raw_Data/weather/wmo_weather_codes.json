@@ -1,0 +1,142 @@
+[
+  {
+    "weather_code": 0,
+    "description": "Clear sky",
+    "condition_group": "Clear"
+  },
+  {
+    "weather_code": 1,
+    "description": "Mainly clear",
+    "condition_group": "Clear"
+  },
+  {
+    "weather_code": 2,
+    "description": "Partly cloudy",
+    "condition_group": "Cloudy"
+  },
+  {
+    "weather_code": 3,
+    "description": "Overcast",
+    "condition_group": "Cloudy"
+  },
+  {
+    "weather_code": 45,
+    "description": "Fog",
+    "condition_group": "Fog"
+  },
+  {
+    "weather_code": 48,
+    "description": "Depositing rime fog",
+    "condition_group": "Fog"
+  },
+  {
+    "weather_code": 51,
+    "description": "Drizzle: light",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 53,
+    "description": "Drizzle: moderate",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 55,
+    "description": "Drizzle: dense",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 56,
+    "description": "Freezing drizzle: light",
+    "condition_group": "Freezing"
+  },
+  {
+    "weather_code": 57,
+    "description": "Freezing drizzle: dense",
+    "condition_group": "Freezing"
+  },
+  {
+    "weather_code": 61,
+    "description": "Rain: slight",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 63,
+    "description": "Rain: moderate",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 65,
+    "description": "Rain: heavy",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 66,
+    "description": "Freezing rain: light",
+    "condition_group": "Freezing"
+  },
+  {
+    "weather_code": 67,
+    "description": "Freezing rain: heavy",
+    "condition_group": "Freezing"
+  },
+  {
+    "weather_code": 71,
+    "description": "Snow fall: slight",
+    "condition_group": "Snow"
+  },
+  {
+    "weather_code": 73,
+    "description": "Snow fall: moderate",
+    "condition_group": "Snow"
+  },
+  {
+    "weather_code": 75,
+    "description": "Snow fall: heavy",
+    "condition_group": "Snow"
+  },
+  {
+    "weather_code": 77,
+    "description": "Snow grains",
+    "condition_group": "Snow"
+  },
+  {
+    "weather_code": 80,
+    "description": "Rain showers: slight",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 81,
+    "description": "Rain showers: moderate",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 82,
+    "description": "Rain showers: violent",
+    "condition_group": "Rain"
+  },
+  {
+    "weather_code": 85,
+    "description": "Snow showers: slight",
+    "condition_group": "Snow"
+  },
+  {
+    "weather_code": 86,
+    "description": "Snow showers: heavy",
+    "condition_group": "Snow"
+  },
+  {
+    "weather_code": 95,
+    "description": "Thunderstorm: slight or moderate",
+    "condition_group": "Storm"
+  },
+  {
+    "weather_code": 96,
+    "description": "Thunderstorm with slight hail",
+    "condition_group": "Storm"
+  },
+  {
+    "weather_code": 99,
+    "description": "Thunderstorm with heavy hail",
+    "condition_group": "Storm"
+  }
+]

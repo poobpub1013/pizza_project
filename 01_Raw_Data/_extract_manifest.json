@@ -1,0 +1,73 @@
+{
+  "extracted_at_utc": "2026-08-11T06:25:04+00:00",
+  "config": {
+    "year": 2015,
+    "date_range": [
+      "2015-01-01",
+      "2015-12-31"
+    ],
+    "city": "Chicago",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "timezone": "America/Chicago",
+    "country_code": "US"
+  },
+  "files": [
+    {
+      "file": "wmo_weather_codes.json",
+      "bytes": 2915,
+      "sha256": "370f4e70896c171dda41c1208cae837f74e43023262e49fd27cae6626ceae441",
+      "source": "WMO code 4677 (คัดจากเอกสาร Open-Meteo)",
+      "url": "https://open-meteo.com/en/docs",
+      "records": 28
+    },
+    {
+      "file": "openmeteo_archive_chicago_2015.json",
+      "bytes": 1068229,
+      "sha256": "e62c30a4e6174dff15c4c9ca827e3c9495d2d0c7cbaeab9600fb975b00ec9b4f",
+      "source": "Open-Meteo Historical Weather Archive",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=41.8781&longitude=-87.6298&start_date=2015-01-01&end_date=2015-12-31&hourly=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,rain,snowfall,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,temperature_2m_mean,apparent_temperature_max,apparent_temperature_min,precipitation_sum,rain_sum,snowfall_sum,precipitation_hours,wind_speed_10m_max,sunrise,sunset&timezone=America/Chicago",
+      "license": "CC-BY-4.0 (non-commercial use, no API key required)",
+      "hourly_records": 8760,
+      "daily_records": 365,
+      "units_as_returned": {
+        "hourly": {
+          "time": "iso8601",
+          "temperature_2m": "°C",
+          "apparent_temperature": "°C",
+          "relative_humidity_2m": "%",
+          "precipitation": "mm",
+          "rain": "mm",
+          "snowfall": "cm",
+          "weather_code": "wmo code",
+          "wind_speed_10m": "km/h"
+        },
+        "daily": {
+          "time": "iso8601",
+          "weather_code": "wmo code",
+          "temperature_2m_max": "°C",
+          "temperature_2m_min": "°C",
+          "temperature_2m_mean": "°C",
+          "apparent_temperature_max": "°C",
+          "apparent_temperature_min": "°C",
+          "precipitation_sum": "mm",
+          "rain_sum": "mm",
+          "snowfall_sum": "cm",
+          "precipitation_hours": "h",
+          "wind_speed_10m_max": "km/h",
+          "sunrise": "iso8601",
+          "sunset": "iso8601"
+        }
+      }
+    },
+    {
+      "file": "nager_publicholidays_us_2015.json",
+      "bytes": 4998,
+      "sha256": "2c42f25207ee206b1527a558280b9e96d9078f5eda315bc51ab72684f0c09825",
+      "source": "Nager.Date Public Holiday API",
+      "url": "https://date.nager.at/api/v3/PublicHolidays/2015/US",
+      "license": "MIT / open data, no API key required",
+      "records": 16
+    }
+  ]
+}
