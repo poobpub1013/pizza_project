@@ -108,6 +108,7 @@
     </div>
     <nav class="nav" id="nav">
       <a data-v="overview" class="on"><span class="i">▤</span> Executive Overview</a>
+      <a data-v="insights"><span class="i">◈</span> Business Insights</a>
       <a data-v="corr"><span class="i">▦</span> Correlation Explorer</a>
       <a data-v="train"><span class="i">◆</span> Model Studio</a>
       <a data-v="compare"><span class="i">⇅</span> Model Comparison</a>
@@ -146,6 +147,151 @@
       </section>
 
       <!-- ============ CORRELATION ============ -->
+      
+<style>
+#v-insights .ins{border:1px solid var(--line);border-radius:12px;background:var(--card);
+  box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px}
+#v-insights .ins h4{margin:0 0 4px;font-size:15px;color:var(--ink);display:flex;
+  align-items:center;gap:10px}
+#v-insights .badge{background:var(--accent);color:#fff;border-radius:6px;font-size:11px;
+  font-weight:700;padding:3px 8px;letter-spacing:.4px;flex:none}
+#v-insights .find{font-size:13px;color:var(--ink);margin:8px 0 10px;line-height:1.6}
+#v-insights .rec{border-left:4px solid var(--good);background:#f2f9f5;
+  border-radius:0 8px 8px 0;padding:10px 14px;font-size:12.5px;line-height:1.6;color:var(--ink)}
+#v-insights .rec.warn{border-left-color:var(--accent);background:#fdf3f4}
+#v-insights .rec b{color:var(--navy2)}
+#v-insights table.mini{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0 10px}
+#v-insights table.mini th{background:var(--navy);color:#fff;text-align:left;
+  padding:5px 9px;font-size:11px}
+#v-insights table.mini td{padding:5px 9px;border-bottom:1px solid var(--line)}
+#v-insights table.mini td.n,#v-insights table.mini th.n{text-align:right;
+  font-variant-numeric:tabular-nums}
+#v-insights .hi{font-weight:700;color:var(--accent)}
+</style>
+
+<section class="view" id="v-insights">
+  <div class="panel" style="margin-bottom:16px">
+    <h3>Business Insights &amp; Recommendations</h3>
+    <div class="desc">ข้อค้นพบ 7 ข้อจากคลังข้อมูล FY2015 ทุกข้อคำนวณจาก
+      <code>pizza_dw.duckdb</code> และมีข้อเสนอแนะที่นำไปปฏิบัติได้กำกับ</div>
+  </div>
+
+  <div class="ins">
+    <h4><span class="badge">01</span> ขนาด XL และ XXL มีขายเพียงเมนูเดียวจาก 32 เมนู</h4>
+    <div class="find">ขนาด L ครองรายได้ <b>45.9%</b> ขณะที่ XL ได้ 1.7% และ XXL ได้ 0.1%
+      (28 ถาดทั้งปี) แต่เมื่อตรวจ <code>dim_pizza</code> ย้อนกลับพบว่า XL/XXL
+      เปิดขายเฉพาะ <b>The Greek Pizza</b> เท่านั้น</div>
+    <table class="mini">
+      <tr><th>ขนาด</th><th>เมนูที่มีขนาดนี้</th><th class="n">รายได้</th><th class="n">สัดส่วน</th></tr>
+      <tr><td>Large</td><td>30 / 32</td><td class="n">$375,319</td><td class="n">45.9%</td></tr>
+      <tr><td>Medium</td><td>29 / 32</td><td class="n">$249,382</td><td class="n">30.5%</td></tr>
+      <tr><td>Small</td><td>30 / 32</td><td class="n">$178,076</td><td class="n">21.8%</td></tr>
+      <tr><td>X-Large</td><td class="hi">1 / 32</td><td class="n">$14,076</td><td class="n">1.7%</td></tr>
+      <tr><td>XX-Large</td><td class="hi">1 / 32</td><td class="n">$1,007</td><td class="n">0.1%</td></tr>
+    </table>
+    <div class="rec warn"><b>ข้อเสนอแนะ:</b> ตัวเลขต่ำ<b>ไม่ได้แปลว่าลูกค้าไม่ต้องการขนาดใหญ่</b>
+      แต่แปลว่าร้านแทบไม่เคยเสนอขาย ควรทดลองเปิดขายขนาด XL กับเมนูขายดี 3 อันดับแรก
+      เป็นเวลา 1 ไตรมาส เพื่อพิสูจน์ว่ามีอุปสงค์จริงหรือไม่ ก่อนตัดสินใจเลิกขาย</div>
+  </div>
+
+  <div class="ins">
+    <h4><span class="badge">02</span> สภาพอากาศแทบไม่มีผลต่อยอดขาย</h4>
+    <div class="find">เมื่อเทียบ <b>ต่อชั่วโมง</b> ให้ตรงกับ grain ที่ <code>weather_key</code>
+      ผูกอยู่ ยอดขายของทุกสภาพอากาศต่างกัน<b>ไม่ถึง 7%</b>
+      และฝนตกกลับให้ยอดสูงที่สุดเล็กน้อย</div>
+    <table class="mini">
+      <tr><th>สภาพอากาศ</th><th class="n">ชั่วโมง</th><th class="n">ยอด/ชั่วโมง</th><th class="n">ยอด/บิล</th></tr>
+      <tr><td>ฝนตก</td><td class="n">437</td><td class="n hi">$197.08</td><td class="n">$38.21</td></tr>
+      <tr><td>เมฆมาก</td><td class="n">2,093</td><td class="n">$196.60</td><td class="n">$38.47</td></tr>
+      <tr><td>ฟ้าใส</td><td class="n">1,511</td><td class="n">$194.84</td><td class="n">$38.17</td></tr>
+      <tr><td>หิมะตก</td><td class="n">140</td><td class="n">$184.63</td><td class="n">$37.57</td></tr>
+    </table>
+    <div class="rec"><b>ข้อเสนอแนะ:</b> เป็น<b>ผลลัพธ์เชิงลบที่มีคุณค่า</b> —
+      ไม่ต้องเสียเวลาปรับแผนกำลังคนหรือสต็อกตามพยากรณ์อากาศ
+      เพราะพิสูจน์จากข้อมูลจริงทั้งปีแล้วว่าผลกระทบเล็กเกินกว่าจะคุ้มค่าบริหาร
+      ควรโฟกัสปัจจัยที่มีผลจริงคือช่วงเวลาและวันในสัปดาห์แทน</div>
+  </div>
+
+  <div class="ins">
+    <h4><span class="badge">03</span> วันหยุดนักขัตฤกษ์ขายดีกว่าวันธรรมดา แต่วันอาทิตย์แย่ที่สุด</h4>
+    <div class="find">วันหยุดนักขัตฤกษ์ทำยอดสูงกว่าวันธรรมดา <b>13%</b>
+      และสูงกว่าสุดสัปดาห์ <b>23%</b> ขณะที่วันอาทิตย์ ($1,908/วัน)
+      ต่ำกว่าวันศุกร์ซึ่งดีที่สุด ($2,721/วัน) ถึง <b>30%</b></div>
+    <table class="mini">
+      <tr><th>ประเภทวัน</th><th class="n">จำนวนวัน</th><th class="n">ยอดขายต่อวัน</th></tr>
+      <tr><td>วันหยุดนักขัตฤกษ์</td><td class="n">11</td><td class="n hi">$2,637</td></tr>
+      <tr><td>วันธรรมดา</td><td class="n">243</td><td class="n">$2,331</td></tr>
+      <tr><td>สุดสัปดาห์</td><td class="n">104</td><td class="n">$2,138</td></tr>
+    </table>
+    <div class="rec"><b>ข้อเสนอแนะ:</b> เพิ่มกำลังคนในวันหยุดนักขัตฤกษ์และวันศุกร์
+      และออกโปรโมชันเจาะจงวันอาทิตย์ เช่น ชุดครอบครัวราคาพิเศษ
+      หากยกยอดวันอาทิตย์ขึ้นเท่าค่าเฉลี่ยได้ จะเพิ่มรายได้ราว <b>$22,000 ต่อปี</b></div>
+  </div>
+
+  <div class="ins">
+    <h4><span class="badge">04</span> รายได้ 70% กระจุกอยู่ในสองช่วงเวลา</h4>
+    <div class="find">Dinner (37.5%) และ Lunch (32.1%) รวมกันเกือบ 70% ของรายได้ทั้งปี
+      ชั่วโมงที่ทำเงินสูงสุดคือ 12:00–12:59 ($111,878) ขณะที่ช่วง 09:00–10:59
+      มีเพียง <b class="hi">9 บิลตลอดทั้งปี</b> คิดเป็นรายได้ $387</div>
+    <table class="mini">
+      <tr><th>ช่วงเวลา</th><th class="n">บิล</th><th class="n">รายได้</th><th class="n">สัดส่วน</th></tr>
+      <tr><td>Dinner (17:00–20:59)</td><td class="n">8,386</td><td class="n">$306,379</td><td class="n hi">37.5%</td></tr>
+      <tr><td>Lunch (11:00–13:59)</td><td class="n">6,206</td><td class="n">$262,879</td><td class="n hi">32.1%</td></tr>
+      <tr><td>Afternoon (14:00–16:59)</td><td class="n">4,860</td><td class="n">$182,249</td><td class="n">22.3%</td></tr>
+      <tr><td>Late Night (21:00–23:59)</td><td class="n">1,889</td><td class="n">$65,966</td><td class="n">8.1%</td></tr>
+      <tr><td>Morning (09:00–10:59)</td><td class="n">9</td><td class="n">$387</td><td class="n">0.0%</td></tr>
+    </table>
+    <div class="rec"><b>ข้อเสนอแนะ:</b> จัดกะให้หนาแน่นช่วง 11:00–14:00 และ 17:00–20:00
+      และ<b>พิจารณาเลื่อนเวลาเปิดร้านจาก 09:00 เป็น 11:00</b>
+      เพราะสองชั่วโมงแรกสร้างรายได้เพียง $387 ตลอดปี ไม่คุ้มค่าแรงและค่าสาธารณูปโภค</div>
+  </div>
+
+  <div class="ins">
+    <h4><span class="badge">05</span> ช่องว่างระหว่างเมนูขายดีกับขายไม่ออกสูงถึง 3.7 เท่า</h4>
+    <div class="find">The Thai Chicken Pizza ทำรายได้ $43,434 ขณะที่ The Brie Carre Pizza
+      ทำได้เพียง $11,588 (490 ถาดทั้งปี) และเป็นเมนูเดียวที่รายได้ต่ำกว่า $12,000</div>
+    <table class="mini">
+      <tr><th>5 อันดับแรก</th><th class="n">รายได้</th><th>5 อันดับสุดท้าย</th><th class="n">รายได้</th></tr>
+      <tr><td>Thai Chicken</td><td class="n">$43,434</td><td>Brie Carre</td><td class="n hi">$11,588</td></tr>
+      <tr><td>Barbecue Chicken</td><td class="n">$42,768</td><td>Green Garden</td><td class="n">$13,956</td></tr>
+      <tr><td>California Chicken</td><td class="n">$41,410</td><td>Spinach Supreme</td><td class="n">$15,278</td></tr>
+      <tr><td>Classic Deluxe</td><td class="n">$38,181</td><td>Mediterranean</td><td class="n">$15,361</td></tr>
+      <tr><td>Spicy Italian</td><td class="n">$34,831</td><td>Spinach Pesto</td><td class="n">$15,596</td></tr>
+    </table>
+    <div class="rec warn"><b>ข้อเสนอแนะ:</b> พิจารณาตัด Brie Carre ออกเพื่อลดภาระวัตถุดิบเฉพาะทาง
+      <b>แต่ต้องตรวจอัตรากำไรก่อนตัดสินใจ</b> เพราะเมนูราคาสูงที่ขายน้อยอาจยังทำกำไรต่อถาดได้ดี
+      ซึ่งต้องรอ Measure M7 ที่ยังคำนวณไม่ได้เพราะข้อมูลต้นทางไม่มีต้นทุน</div>
+  </div>
+
+  <div class="ins">
+    <h4><span class="badge">06</span> ร้านปิดทุกวันจันทร์ตลอดเดือนตุลาคม</h4>
+    <div class="find">ร้านเปิดขายจริง 358 จาก 365 วัน วันที่ปิดคือ 24–25 ก.ย.,
+      <b class="hi">5 / 12 / 19 / 26 ต.ค. ซึ่งเป็นวันจันทร์ครบทั้ง 4 สัปดาห์</b>
+      และ 25 ธ.ค. (Christmas Day) รูปแบบที่เป็นระบบขนาดนี้เกิดจากความบังเอิญไม่ได้</div>
+    <div class="rec warn"><b>ข้อเสนอแนะ:</b> ตรวจสอบกับฝ่ายปฏิบัติการว่าเป็นการปิดจริงหรือ
+      <b>ข้อมูลสูญหายตอนส่งออกจากระบบ POS</b> และไม่ว่ากรณีใดต้องใช้
+      <b>M6 (ยอดขายต่อวันทำการ)</b> แทนยอดรวมรายเดือน เพราะตุลาคมมียอดรวมต่ำสุด ($64,028)
+      แต่คิดต่อวันทำการกลับอยู่อันดับ 2 ($2,371)</div>
+  </div>
+
+  <div class="ins">
+    <h4><span class="badge">07</span> วัตถุดิบกระจุกตัวสูง ต้องบริหารความเสี่ยง</h4>
+    <div class="find">กระเทียมถูกใช้ใน <b class="hi">20 จาก 32 เมนู (62.5%)</b>
+      หากขาดวัตถุดิบชนิดนี้เพียงอย่างเดียว จะกระทบเมนูเกินครึ่งร้านทันที</div>
+    <table class="mini">
+      <tr><th>วัตถุดิบ</th><th>หมวด</th><th class="n">ใช้ในกี่เมนู</th><th class="n">สัดส่วน</th></tr>
+      <tr><td>Garlic</td><td>ผัก</td><td class="n hi">20</td><td class="n">62.5%</td></tr>
+      <tr><td>Tomatoes</td><td>ผัก</td><td class="n">18</td><td class="n">56.3%</td></tr>
+      <tr><td>Red Onions</td><td>ผัก</td><td class="n">13</td><td class="n">40.6%</td></tr>
+      <tr><td>Red Peppers</td><td>ผัก</td><td class="n">10</td><td class="n">31.3%</td></tr>
+      <tr><td>Spinach</td><td>ผัก</td><td class="n">8</td><td class="n">25.0%</td></tr>
+    </table>
+    <div class="rec"><b>ข้อเสนอแนะ:</b> กำหนดให้กระเทียมและมะเขือเทศเป็น <b>วัตถุดิบวิกฤต</b>
+      ที่ต้องมี Safety Stock สูงกว่าปกติ และมีผู้จัดจำหน่ายสำรองอย่างน้อย 2 ราย
+      ส่วนวัตถุดิบเฉพาะทางที่ใช้เมนูเดียวควรสั่งแบบ Just-in-time เพื่อลดของเสีย</div>
+  </div>
+</section>
+
       <section class="view" id="v-corr">
         <div class="panel" style="margin-bottom:18px">
           <h3>Correlation Explorer</h3>
@@ -328,7 +474,8 @@ const titles = {overview:['Executive Overview','Full-year performance across the
   compare:['Model Comparison','Benchmark algorithms with cross-validation'],
   predict:['Prediction Engine','Answer real-world pizza questions'],
   planner:['Demand & Stocking Planner','Forecast any date & size your ingredient order'],
-  warehouse:['Warehouse Schema','How the DuckDB warehouse is structured']};
+  warehouse:['Warehouse Schema','How the DuckDB warehouse is structured'],
+  insights:['Business Insights','ข้อค้นพบและข้อเสนอแนะจากคลังข้อมูล FY2015']};
 document.querySelectorAll('#nav a').forEach(a=>a.onclick=()=>{
   document.querySelectorAll('#nav a').forEach(x=>x.classList.remove('on'));
   a.classList.add('on');

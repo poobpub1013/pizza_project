@@ -8,8 +8,8 @@
 ## กระบวนการทั้งวงจร
 
 ```
-01_Raw_Data/            02_ETL/                  03_Data_Warehouse/       ผลลัพธ์
-─────────────           ─────────                ──────────────────       ──────────
+01_Raw_Data/            02_ETL/                  03_Data_Warehouse/       04_Dashboard/
+─────────────           ─────────                ──────────────────       ─────────────
 pizza_sales/*.csv  ┐    fetch_sources.py    ┐    pizza_dw.duckdb     ┐    Pizza_Analysis.ipynb
 weather/*.json     ├──▶ etl_pipeline.ipynb  ├──▶ csv/*.csv           ├──▶ Pizza_Sales_Dashboard.html
 holidays/*.json    ┘                        ┘                        ┘
@@ -19,8 +19,8 @@ holidays/*.json    ┘                        ┘                        ┘
 |------|------|--------|
 | Extract | `02_ETL/fetch_sources.py` | ดึงข้อมูลสภาพอากาศและวันหยุดจาก REST API มาเก็บเป็น raw JSON |
 | ETL | `02_ETL/etl_pipeline.ipynb` | Extract → Clean → Transform → Integrate → Load เข้า DuckDB |
-| วิเคราะห์ | `Pizza_Analysis.ipynb` | EDA, Feature Engineering, Machine Learning |
-| นำเสนอ | `Pizza_Sales_Dashboard.html` | Dashboard เชิงโต้ตอบ เปิดด้วยเบราว์เซอร์ได้ทันที |
+| วิเคราะห์ | `04_Dashboard/Pizza_Analysis.ipynb` | EDA, Feature Engineering, Machine Learning |
+| นำเสนอ | `04_Dashboard/Pizza_Sales_Dashboard.html` | Dashboard เชิงโต้ตอบ เปิดด้วยเบราว์เซอร์ได้ทันที |
 
 ---
 
@@ -36,10 +36,10 @@ python 02_ETL/fetch_sources.py
 jupyter nbconvert --to notebook --execute --inplace 02_ETL/etl_pipeline.ipynb
 
 # 3. วิเคราะห์
-jupyter notebook Pizza_Analysis.ipynb
+jupyter notebook 04_Dashboard/Pizza_Analysis.ipynb
 ```
 
-เปิด Dashboard โดยดับเบิลคลิก `Pizza_Sales_Dashboard.html` ได้เลย ไม่ต้องรันเซิร์ฟเวอร์
+เปิด Dashboard โดยดับเบิลคลิก `04_Dashboard/Pizza_Sales_Dashboard.html` ได้เลย ไม่ต้องรันเซิร์ฟเวอร์
 
 > `etl_pipeline.ipynb` เป็น **full refresh** รันซ้ำกี่ครั้งก็ได้ผลเหมือนเดิม
 > และไม่แก้ไฟล์ใน `01_Raw_Data/` ซึ่งถือเป็น read-only
@@ -122,3 +122,7 @@ jupyter notebook Pizza_Analysis.ipynb
 - [`Report/02_Questions_and_Measures.md`](Report/02_Questions_and_Measures.md) — Business Questions 8 ข้อ และ Measures 7 ตัว
 - [`01_Raw_Data/SOURCES.md`](01_Raw_Data/SOURCES.md) — รายละเอียดแหล่งข้อมูลและปัญหาคุณภาพ
 - [`01_Raw_Data/data_dictionary.csv`](01_Raw_Data/data_dictionary.csv) — คำอธิบายฟิลด์ของข้อมูลต้นทาง
+- `Report/รายงานโครงการ_Mini_DW_Pizza.pdf` — รายงานฉบับสมบูรณ์ 15 หน้า
+
+> โฟลเดอร์ `05_AI_Usage_Log/` (บันทึกการใช้ Generative AI ตามที่โจทย์กำหนด)
+> เก็บแยกไว้ในโฟลเดอร์ Google Drive ของกลุ่ม ไม่ได้รวมอยู่ใน repository นี้
