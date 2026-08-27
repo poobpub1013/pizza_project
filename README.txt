@@ -28,15 +28,24 @@
       csv/                ตารางทั้งหมดในรูปแบบ CSV สำหรับ BI Tool ที่ต่อ DuckDB ไม่ได้
 
   04_Dashboard/
-      Pizza_Sales_Dashboard.html   Dashboard เชิงโต้ตอบ 8 หน้าจอ
       Pizza_Analysis.ipynb         EDA, Feature Engineering, Machine Learning
 
+  index.html
+      Dashboard เชิงโต้ตอบ 8 หน้าจอ เผยแพร่ผ่าน GitHub Pages
+      วางที่รากของโปรเจกต์เพราะ GitHub Pages ให้บริการจากรากหรือ /docs เท่านั้น
+      เมื่ออัปขึ้น Google Drive ให้คัดลอกไฟล์นี้เข้าโฟลเดอร์ 04_Dashboard ด้วย
+
+  pipeline/
+      dashboard_template.html      เทมเพลตของ Dashboard (แก้ที่นี่ ไม่ใช่ index.html)
+      ml_train_v3.py               ฝึกโมเดลและ generate index.html
+      test_stocking.py             ชุดทดสอบตัวคำนวณวัตถุดิบ
+
   05_AI_Usage_Log/
-      บันทึกการใช้ Generative AI จำนวน 5 prompt
+      บันทึกการใช้ Generative AI จำนวน 9 prompt
       (เก็บในโฟลเดอร์ Google Drive ของกลุ่ม ไม่ได้รวมอยู่ใน repository)
 
   Report/
-      รายงานโครงการ_Mini_DW_Pizza.pdf   รายงานฉบับสมบูรณ์ 15 หน้า
+      รายงานโครงการ_Mini_DW_Pizza.pdf   รายงานฉบับสมบูรณ์ 15 หน้า (มีฉบับ Word ให้แก้ไขด้วย)
       report.html                        ไฟล์ต้นฉบับที่ใช้สร้าง PDF
       01_Objectives.md                   Business Problem, Stakeholders, วัตถุประสงค์
       02_Questions_and_Measures.md       Business Questions 8 ข้อ และ Measures 7 ตัว
@@ -64,8 +73,12 @@
 
   ขั้นที่ 4 - เปิด Dashboard
 
-      ดับเบิลคลิกไฟล์ 04_Dashboard/Pizza_Sales_Dashboard.html
+      ดับเบิลคลิกไฟล์ index.html
       เปิดด้วยเบราว์เซอร์ได้ทันที ไม่ต้องรันเซิร์ฟเวอร์
+
+      หากต้องการแก้ Dashboard ให้แก้ที่ pipeline/dashboard_template.html
+      แล้วรัน python pipeline/ml_train_v3.py เพื่อสร้าง index.html ใหม่
+      จากนั้นตรวจด้วย python pipeline/test_stocking.py
 
   หมายเหตุ
       etl_pipeline.ipynb ทำงานแบบ full refresh รันซ้ำกี่ครั้งก็ได้ผลลัพธ์เหมือนเดิม
