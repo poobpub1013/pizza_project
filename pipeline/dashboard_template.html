@@ -10,21 +10,21 @@
     --navy:#0e2340; --navy2:#16345c; --ink:#12263f; --slate:#5a6b82;
     --line:#e2e8f1; --bg:#f4f6fa; --card:#ffffff; --accent:#b32330;
     --accent2:#1f7a8c; --gold:#c8842b; --good:#2e7d54; --bad:#b32330;
-    --shadow:0 1px 3px rgba(16,38,71,.08),0 8px 24px rgba(16,38,71,.06);
+    --shadow:none;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
        background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
   .app{display:flex;min-height:100vh}
   /* ---- sidebar ---- */
-  .side{width:248px;background:linear-gradient(180deg,var(--navy),#0a1a30);color:#cdd8e8;
+  .side{width:248px;background:var(--navy);color:#cdd8e8;
         display:flex;flex-direction:column;position:fixed;height:100vh;z-index:20}
   .brand{padding:22px 22px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
   .brand h1{font-size:15px;font-weight:700;color:#fff;letter-spacing:.3px;display:flex;align-items:center;gap:9px}
-  .brand .logo{width:26px;height:26px;border-radius:6px;background:var(--accent);display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;letter-spacing:.5px}
+  .brand .logo{width:26px;height:26px;border-radius:0;background:var(--accent);display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;letter-spacing:.5px}
   .brand p{font-size:11px;color:#7f92ac;margin-top:5px;letter-spacing:.4px;text-transform:uppercase}
   .nav{padding:14px 12px;flex:1}
-  .nav a{display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:8px;color:#b8c6da;
+  .nav a{display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:0;color:#b8c6da;
          text-decoration:none;font-size:13.5px;font-weight:500;cursor:pointer;margin-bottom:2px;transition:.15s}
   .nav a:hover{background:rgba(255,255,255,.06);color:#fff}
   .nav a.on{background:var(--accent);color:#fff}
@@ -36,19 +36,20 @@
        display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
   .top h2{font-size:18px;font-weight:700;color:var(--ink)}
   .top .sub{font-size:12.5px;color:var(--slate);margin-top:2px}
-  .top .badge{font-size:11px;font-weight:600;color:var(--accent2);background:#e7f1f3;padding:5px 11px;border-radius:20px;border:1px solid #cfe6ea}
+  .top .badge{font-size:11px;font-weight:600;color:var(--accent2);background:#e7f1f3;padding:5px 11px;border-radius:0;border:1px solid #cfe6ea}
   .wrap{padding:28px 32px 60px}
   .view{display:none}.view.on{display:block}
   /* ---- cards / grid ---- */
   .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:24px}
-  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px;box-shadow:var(--shadow)}
+  .kpi{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--navy);border-radius:0;padding:18px;box-shadow:var(--shadow)}
   .kpi .lab{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--slate);font-weight:600}
   .kpi .val{font-size:25px;font-weight:750;color:var(--navy);margin-top:8px;letter-spacing:-.5px}
   .kpi .note{font-size:11.5px;color:var(--slate);margin-top:4px}
-  .kpi .bar{height:3px;border-radius:3px;margin-top:12px;background:var(--accent);opacity:.85}
+  .kpi .bar{height:3px;border-radius:0;margin-top:12px;background:var(--accent);opacity:.85}
   .grid{display:grid;gap:18px}
   .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:2fr 1fr}
-  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:var(--shadow)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:0;padding:20px;box-shadow:var(--shadow)}
+  .panel>h3{padding-bottom:8px;border-bottom:1px solid var(--line)}
   .panel h3{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
   .panel .desc{font-size:12px;color:var(--slate);margin-bottom:16px}
   .chartbox{position:relative;height:280px}
@@ -56,44 +57,44 @@
   h4.sec{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--slate);font-weight:700;margin:6px 0 14px}
   /* ---- controls ---- */
   label.fld{display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px}
-  select,input[type=number]{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;
+  select,input[type=number]{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:0;
         font-size:13.5px;color:var(--ink);background:#fff;font-family:inherit}
   select:focus,input:focus{outline:none;border-color:var(--accent2)}
-  .btn{background:var(--accent);color:#fff;border:none;padding:10px 18px;border-radius:8px;font-size:13.5px;
+  .btn{background:var(--accent);color:#fff;border:none;padding:10px 18px;border-radius:0;font-size:13.5px;
        font-weight:650;cursor:pointer;transition:.15s;font-family:inherit}
   .btn:hover{background:#8f1b26}
   .btn.alt{background:var(--navy2)}.btn.alt:hover{background:var(--navy)}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-size:12.5px;padding:7px 12px;border:1px solid var(--line);border-radius:20px;cursor:pointer;
+  .chip{font-size:12.5px;padding:7px 12px;border:1px solid var(--line);border-radius:0;cursor:pointer;
         background:#fff;color:var(--slate);user-select:none;transition:.12s;font-weight:500}
   .chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
   /* ---- correlation heatmap ---- */
   .heat{border-collapse:collapse;font-size:11.5px;width:100%}
   .heat th{font-weight:600;color:var(--slate);padding:6px;text-align:center;font-size:11px}
   .heat td.lbl{font-weight:600;color:var(--ink);text-align:right;padding-right:10px;white-space:nowrap}
-  .heat td.cell{width:52px;height:38px;text-align:center;color:#fff;font-weight:600;border:2px solid #fff;border-radius:4px}
+  .heat td.cell{width:52px;height:38px;text-align:center;color:#fff;font-weight:600;border:2px solid #fff;border-radius:0}
   /* ---- tables ---- */
   table.data{width:100%;border-collapse:collapse;font-size:13px}
-  table.data th{text-align:left;padding:10px 12px;color:var(--slate);font-size:11px;text-transform:uppercase;
+  table.data th{text-align:left;padding:10px 12px;color:var(--slate);background:#f7f9fc;font-size:11px;text-transform:uppercase;
         letter-spacing:.4px;border-bottom:2px solid var(--line)}
   table.data td{padding:10px 12px;border-bottom:1px solid var(--line)}
   table.data tr:hover td{background:#f8fafc}
   table.data td.num{text-align:right;font-variant-numeric:tabular-nums}
   .best{color:var(--good);font-weight:700}
-  .pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:12px}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:0}
   .pill.win{background:#e3f3ea;color:var(--good)}
   /* ---- metrics readout ---- */
   .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:4px}
-  .metric{background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:15px;text-align:center}
+  .metric{background:#f7f9fc;border:1px solid var(--line);border-radius:0;padding:15px;text-align:center}
   .metric .m{font-size:24px;font-weight:750;color:var(--navy)}
   .metric .l{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--slate);font-weight:600;margin-top:3px}
-  .pred-out{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:12px;
+  .pred-out{background:var(--navy);color:#fff;border-radius:0;
         padding:24px;text-align:center;margin-top:18px}
   .pred-out .big{font-size:42px;font-weight:800;letter-spacing:-1px}
   .pred-out .cap{font-size:13px;color:#b8c6da;margin-top:6px}
   .preset{font-size:12.5px;color:var(--accent2);cursor:pointer;text-decoration:underline;margin:3px 14px 3px 0;display:inline-block}
-  .callout{background:#fff8ec;border:1px solid #f0dcb8;border-left:3px solid var(--gold);border-radius:8px;
-        padding:12px 15px;font-size:12.5px;color:#7a5a1e;margin-top:14px}
+  .readout{background:#f7f9fc;border:1px solid var(--line);border-left:2px solid var(--navy);border-radius:0;
+        padding:12px 15px;font-size:12.5px;color:var(--ink);margin-top:14px}
   .mut{color:var(--slate);font-size:12.5px}
   @media(max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.g2,.g3{grid-template-columns:1fr}}
 </style>
@@ -188,7 +189,7 @@
             <div class="metric"><div class="m" id="tr_mae">–</div><div class="l">MAE</div></div>
             <div class="metric"><div class="m" id="tr_rmse">–</div><div class="l">RMSE</div></div>
           </div>
-          <div class="callout" id="tr_overfit" style="margin-top:14px"></div>
+          <div class="readout" id="tr_overfit" style="margin-top:14px"></div>
           <div class="grid g2" style="margin-top:18px">
             <div><h4 class="sec">Predicted vs Actual (test set)</h4><div class="chartbox sm"><canvas id="c_fit"></canvas></div></div>
             <div><h4 class="sec">Feature weights (standardized)</h4><div class="chartbox sm"><canvas id="c_coef"></canvas></div></div>
@@ -204,8 +205,7 @@
           <div style="max-width:340px"><label class="fld">Target</label><select id="cmp_ds"></select></div>
         </div>
         <div class="grid g2">
-          <div class="panel"><h3>Metrics</h3><div class="desc" id="cmp_grain"></div><div id="cmp_table"></div>
-            <div class="callout" id="cmp_note"></div></div>
+          <div class="panel"><h3>Metrics</h3><div class="desc" id="cmp_grain"></div><div id="cmp_table"></div></div>
           <div class="panel"><h3>Accuracy (R²) by model</h3><div class="desc">Cross-validated coefficient of determination</div>
             <div class="chartbox"><canvas id="c_cmp"></canvas></div></div>
         </div>
@@ -237,7 +237,7 @@
       <section class="view" id="v-planner">
         <div class="panel" style="margin-bottom:18px">
           <h3>Demand &amp; Stocking Planner</h3>
-          <div class="desc">Pick any date. The model reads its weekday, month and whether it is a US public holiday, auto-fills typical weather for that time of year (override below), then forecasts pizzas for the whole day and each time period — and converts that into an ingredient stocking list.</div>
+          <div class="desc">Pick any date. The model reads its weekday, month and whether it is a US public holiday, auto-fills typical weather for that time of year (override below), then forecasts pizzas for the whole day and each time period — and converts that into an exact ingredient order, in kilograms.</div>
           <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:end">
             <div><label class="fld">Target date</label><input type="date" id="pl_date" value="2015-12-25" min="2015-01-01" max="2026-12-31"></div>
             <div><label class="fld">Stocking horizon</label><select id="pl_horizon">
@@ -245,7 +245,7 @@
               <option value="7" selected>Full week (7×)</option><option value="30">Month (30×)</option></select></div>
             <div><button class="btn" id="pl_go">▧ Forecast &amp; plan</button></div>
           </div>
-          <div id="pl_daymeta" class="callout" style="display:none"></div>
+          <div id="pl_daymeta" class="readout" style="display:none"></div>
           <h4 class="sec" style="margin-top:16px">Weather for this date <span class="mut" style="text-transform:none;letter-spacing:0">— auto-filled to seasonal typical, drag to override</span></h4>
           <div class="grid" id="pl_weather" style="grid-template-columns:repeat(4,1fr);gap:18px"></div>
         </div>
@@ -264,8 +264,10 @@
               <div><h3>Ingredient stocking list</h3><div class="desc" id="pl_stockdesc"></div></div>
               <div><input type="text" id="pl_search" placeholder="filter ingredient…" style="width:200px"></div>
             </div>
+            <h4 class="sec" style="margin-top:14px">Recipe weights <span class="mut" style="text-transform:none;letter-spacing:0">— grams per portion, per ingredient category. Edit to match your recipe card.</span></h4>
+            <div class="grid" id="pl_grams" style="grid-template-columns:repeat(5,1fr);gap:12px"></div>
+            <div id="pl_stocktotal" class="metrics" style="grid-template-columns:repeat(3,1fr);margin-top:16px"></div>
             <div id="pl_stocktable" style="max-height:520px;overflow:auto;margin-top:8px"></div>
-            <div class="callout">Portions are <b>size-weighted</b> (a Large uses 2× a Small, XXL 3×) and based on last year's actual pizza mix. Multiply portions by your recipe's grams-per-portion to get purchase weights.</div>
           </div>
         </div>
       </section>
@@ -280,7 +282,7 @@
         <div class="panel">
           <h3>Star schema</h3>
           <div class="desc">Fact table at the pizza-line grain, surrounded by conformed dimensions. Enriched with two external sources — US public holidays and daily/hourly weather — plus a many-to-many ingredient bridge for stocking analysis.</div>
-          <pre style="font-size:11.5px;line-height:1.65;color:var(--ink);background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:18px;overflow:auto">
+          <pre style="font-size:11.5px;line-height:1.65;color:var(--ink);background:#f7f9fc;border:1px solid var(--line);border-radius:0;padding:18px;overflow:auto">
         ┌──────────────────┐        ┌──────────────────┐        ┌──────────────────┐
         │   dim_holiday    │        │    dim_date      │        │ dim_weather_code │
         │  US public       ├────────┤  date_key, dow,  ├────────┤  wmo code →      │
@@ -542,11 +544,6 @@ function renderCompare(){
       return `<tr><td><b>${n}</b></td><td class="num ${w?'best':''}">${m.r2.toFixed(3)}</td>
         <td class="num">${fmt(m.mae,2)}</td><td class="num">${fmt(m.rmse,2)}</td>
         <td>${w?'<span class="pill win">best fit</span>':''}</td></tr>`;}).join('')+'</table>';
-  let note;
-  if(k==='pizza')note='Note: R² is low / negative here — a pizza\'s annual revenue is driven mainly by customer popularity, which the menu attributes (size, price, ingredients) do not capture. A useful, honest finding for your teammate to dig into.';
-  else if(k==='hourly')note='Tree models (Random Forest / Gradient Boosting) edge out linear regression, capturing the non-linear lunch & dinner peaks.';
-  else note='Calendar features explain a modest share of daily variance; weekends and month drive most of the signal. Adding promotions or weather data would likely help.';
-  $('#cmp_note').textContent=note;
   if(cmpChart)cmpChart.destroy();
   cmpChart=new Chart($('#c_cmp'),{type:'bar',data:{labels:names,
     datasets:[{data:names.map(n=>mods[n].r2),backgroundColor:names.map(n=>mods[n].r2===bestR2?C.good:C.navy),borderRadius:5}]},
@@ -563,8 +560,7 @@ function renderLift(k){
   $('#lift_note').innerHTML=`<table class="data"><tr><th>Feature set</th><th class="num">CV R²</th><th>Verdict</th></tr>
     <tr><td>Calendar (weekday, month)</td><td class="num">${L.calendar_only.toFixed(3)}</td><td>baseline</td></tr>
     <tr><td>+ US public holidays</td><td class="num ${L.plus_holiday>=L.calendar_only?'best':''}">${L.plus_holiday.toFixed(3)}</td><td>holidays run ~${DATA.planner.holiday_uplift_pct}% busier</td></tr>
-    <tr><td>+ Chicago weather</td><td class="num" style="color:${L.plus_weather<L.calendar_only?C.accent:C.good}">${L.plus_weather.toFixed(3)}</td><td>${L.plus_weather<L.calendar_only?'adds noise ↓':'helps'}</td></tr></table>
-    <div class="callout">Takeaway: <b>holidays are a real, actionable signal</b> (stock up ~${DATA.planner.holiday_uplift_pct}% on holidays), but temperature/precipitation don't move pizza demand in this dataset — likely because the store location was assumed (Chicago). The planner still lets you override weather so you can test it yourself.</div>`;
+    <tr><td>+ Chicago weather</td><td class="num" style="color:${L.plus_weather<L.calendar_only?C.accent:C.good}">${L.plus_weather.toFixed(3)}</td><td>${L.plus_weather<L.calendar_only?'adds noise ↓':'helps'}</td></tr></table>`;
   if(liftChart)liftChart.destroy();
   liftChart=new Chart($('#c_lift'),{type:'bar',data:{labels,
     datasets:[{data:vals,backgroundColor:[C.navy,C.good,C.accent],borderRadius:5}]},
@@ -691,6 +687,7 @@ function initPlanner(){
   $('#pl_go').onclick=()=>runPlan(false);
   $('#pl_horizon').onchange=()=>{if(plCur)runPlan(true);};
   $('#pl_search').oninput=renderStock;
+  initGrams();
   syncWeather(false);
 }
 function currentDateParts(){
@@ -749,17 +746,45 @@ function runPlan(quiet){
     options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'pizzas'}}}}});
   renderStock();
 }
+/* grams of raw ingredient per size-weighted portion, keyed by ingredient category.
+   Defaults ship from the pipeline; the inputs below let a kitchen calibrate them. */
+const GRAMS_FALLBACK=40;
+function gramsFor(cat){const el=$('#plg_'+slug(cat));
+  return el?(+el.value||0):((DATA.stocking.grams_per_portion||{})[cat]??GRAMS_FALLBACK);}
+function slug(s){return String(s).replace(/[^a-z0-9]+/gi,'_');}
+function kg(g){return g>=1000?(g/1000).toFixed(g>=10000?0:1)+' kg':Math.round(g)+' g';}
+function initGrams(){
+  const def=DATA.stocking.grams_per_portion||{};
+  const cats=[...new Set(DATA.stocking.ingredients.map(i=>i.category||'Other'))].sort();
+  $('#pl_grams').innerHTML=cats.map(c=>`<div><label class="fld">${c}</label>
+    <input type="number" id="plg_${slug(c)}" min="0" step="1" value="${def[c]??GRAMS_FALLBACK}">
+    <div class="mut" style="font-size:11px">g / portion</div></div>`).join('');
+  cats.forEach(c=>{$('#plg_'+slug(c)).oninput=renderStock;});
+}
 function renderStock(){
   if(!plCur)return;
   const horizon=+$('#pl_horizon').value, pizzas=plCur.total*horizon;
   const q=($('#pl_search').value||'').toLowerCase();
-  const items=DATA.stocking.ingredients.map(i=>({name:i.ingredient,portions:i.per_pizza*pizzas}))
-    .filter(i=>i.name.toLowerCase().includes(q));
-  $('#pl_stockdesc').innerHTML=`For <b>${Math.round(pizzas).toLocaleString()}</b> pizzas over ${horizon} day(s) · ${items.length} of ${DATA.stocking.ingredients.length} ingredients`;
-  const maxp=Math.max(...items.map(i=>i.portions),1);
-  $('#pl_stocktable').innerHTML='<table class="data"><tr><th>Ingredient</th><th class="num">Portions needed</th><th style="width:34%">Relative volume</th></tr>'+
-    items.map(i=>`<tr><td>${i.name}</td><td class="num" style="font-weight:700">${fmt(Math.ceil(i.portions))}</td>
-      <td><div style="background:#eef2f7;border-radius:4px;height:14px"><div style="width:${(i.portions/maxp*100).toFixed(1)}%;background:${C.accent2};height:14px;border-radius:4px"></div></div></td></tr>`).join('')+'</table>';
+  const all=DATA.stocking.ingredients.map(i=>{
+    const cat=i.category||'Other', portions=i.per_pizza*pizzas;
+    return {name:i.ingredient,cat,portions,grams:portions*gramsFor(cat)};
+  });
+  const items=all.filter(i=>i.name.toLowerCase().includes(q));
+  $('#pl_stockdesc').innerHTML=`For <b>${Math.round(pizzas).toLocaleString()}</b> pizzas over ${horizon} day(s) · ${items.length} of ${all.length} ingredients`;
+  // totals always cover the full list, not the filtered view
+  const totG=all.reduce((a,i)=>a+i.grams,0);
+  const byCat={}; all.forEach(i=>byCat[i.cat]=(byCat[i.cat]||0)+i.grams);
+  const topCat=Object.keys(byCat).sort((a,b)=>byCat[b]-byCat[a])[0]||'—';
+  $('#pl_stocktotal').innerHTML=[
+    [kg(totG),'Total raw weight to order'],
+    [topCat,'Heaviest category ('+kg(byCat[topCat]||0)+')'],
+    [kg(totG/Math.max(pizzas,1)),'Raw weight per pizza']
+  ].map(m=>`<div class="metric"><div class="m">${m[0]}</div><div class="l">${m[1]}</div></div>`).join('');
+  const maxg=Math.max(...items.map(i=>i.grams),1);
+  $('#pl_stocktable').innerHTML='<table class="data"><tr><th>Ingredient</th><th>Category</th><th class="num">Portions</th><th class="num">g / portion</th><th class="num">Order quantity</th><th style="width:22%">Relative volume</th></tr>'+
+    items.map(i=>`<tr><td>${i.name}</td><td class="mut">${i.cat}</td><td class="num">${fmt(Math.ceil(i.portions))}</td>
+      <td class="num">${gramsFor(i.cat)}</td><td class="num" style="font-weight:700">${kg(i.grams)}</td>
+      <td><div style="background:#eef2f7;border-radius:0;height:14px"><div style="width:${(i.grams/maxg*100).toFixed(1)}%;background:${C.accent2};height:14px;border-radius:0"></div></div></td></tr>`).join('')+'</table>';
 }
 
 /* ================= boot ================= */

@@ -209,6 +209,7 @@ bundle["planner"] = {
 # ======================================================================
 usage = con.execute("""
   SELECT ig.ingredient_name AS ingredient,
+         ANY_VALUE(ig.ingredient_category) AS category,
          ROUND(SUM(f.quantity * (0.5 + 0.5*p.size_rank)),1) AS portions_year,
          COUNT(DISTINCT p.pizza_type_id) AS pizza_types_with_ingredient
   FROM fact_sales_line f JOIN dim_pizza p USING(pizza_key)
@@ -220,10 +221,17 @@ total_pizzas = con.execute("SELECT SUM(quantity) FROM fact_sales_line").fetchone
 usage["per_pizza"] = usage["portions_year"]/total_pizzas
 bundle["stocking"] = {
     "total_pizzas_year": int(total_pizzas),
-    "ingredients": [{"ingredient": r.ingredient, "per_pizza": round(float(r.per_pizza),4),
+    "ingredients": [{"ingredient": r.ingredient, "category": r.category,
+                     "per_pizza": round(float(r.per_pizza),4),
                      "portions_year": round(float(r.portions_year),1)} for r in usage.itertuples()],
+    # grams of raw ingredient per size-weighted portion (one Small-pizza serving).
+    # ponytail: category-level averages — the source data has no recipe weights.
+    # The dashboard exposes these as editable inputs, so a kitchen can calibrate
+    # them against its own recipe card without touching this file.
+    "grams_per_portion": {"Cheese": 70, "Sauce": 50, "Meat": 35,
+                          "Seafood": 30, "Vegetable & Other": 25},
     "note":"per_pizza = size-weighted ingredient portions consumed per pizza sold (S=1.0 … XXL=3.0). "
-           "Stock = per_pizza × predicted pizzas.",
+           "Stock = per_pizza × predicted pizzas. Exact weight = portions × grams_per_portion[category].",
 }
 
 # ======================================================================
@@ -260,6 +268,11 @@ bundle["charts"] = {
 }
 
 with open(os.path.join(OUT,"dashboard_data.json"),"w") as f: json.dump(bundle, f)
+
+# render the dashboard: template + data -> index.html (what GitHub Pages serves)
+tpl  = open(os.path.join(OUT, "dashboard_template.html")).read()
+html = os.path.join(PROJECT, "index.html")
+with open(html, "w") as f: f.write(tpl.replace("__DATA__", json.dumps(bundle)))
 
 # ------------------------------------------------------------------ report
 print("Source warehouse:", DW)
